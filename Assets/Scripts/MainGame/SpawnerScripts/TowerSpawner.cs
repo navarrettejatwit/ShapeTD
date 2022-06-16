@@ -18,10 +18,14 @@ public class TowerSpawner : MonoBehaviour
     
     [SerializeField] private Tower TowerPrefab;
 
-    private float buildtime = 0;
+    [SerializeField] private GameObject towers = null;
+
+    //private float buildtime = 0;
 
     private TowerFactory Tower_Factory;
     
+    private bool canBuildTower = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +40,7 @@ public class TowerSpawner : MonoBehaviour
                 VirtualSlotMatrix[i, j] = new Cell(i, j, false);
             }
         }
-        Tower_Factory = new TowerFactory(TowerPrefab);
+        Tower_Factory = new TowerFactory(TowerPrefab, towers);
     }
 
     // Update is called once per frame
@@ -45,16 +49,20 @@ public class TowerSpawner : MonoBehaviour
         //To do if build tower buttons pressed and wait or not pressed.
         if (Input.GetMouseButtonDown(1))
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit))
+            if (canBuildTower)
             {
-                Transform objectHit = hit.transform;
-                int i = (int) objectHit.position.x;
-                int j = (int) objectHit.position.y;
-                bool fill = spawnTower(objectHit);
-                VirtualSlotMatrix[i, j].setIsFilled(fill);
-                //To do mark that tower was placed mouse input set disabled
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(ray, out hit))
+                {
+                    Transform objectHit = hit.transform;
+                    int i = (int) objectHit.position.x;
+                    int j = (int) objectHit.position.y;
+                    bool fill = spawnTower(objectHit);
+                    VirtualSlotMatrix[i, j].setIsFilled(fill);
+                    Debug.Log("spawnedTower");
+                    canBuildTower = false;
+                }
             }
         }
 
@@ -74,6 +82,11 @@ public class TowerSpawner : MonoBehaviour
         
     }
 
+    public void TowerBuildButtonClicked()
+    {
+        canBuildTower = true;
+    }
+    
     public bool spawnTower(Transform coord)
     {
         Tower_Factory.setSpawnPoint(coord);

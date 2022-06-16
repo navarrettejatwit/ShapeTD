@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class SlotGrid : MonoBehaviour
 {
-    
     public GameObject SlotGraphic = null;
 
     public GameObject Parent = null;
+
+	public Camera camera;
     
     public GameObject[,] SlotMatrix;
     
@@ -18,6 +19,10 @@ public class SlotGrid : MonoBehaviour
     private int column;
 
     private TowerSpawner ts;
+
+	private float aspectRatio;
+
+	private float previousAspectRatio;
     
     // Start is called before the first frame update
     void Start()
@@ -33,14 +38,27 @@ public class SlotGrid : MonoBehaviour
                 SlotMatrix[i, j] = Instantiate(SlotGraphic, Position, Quaternion.identity, Parent.transform);
             }
         }
-
+		updateSlotGraphic();
+		Vector3 position = new Vector3((column - 1) / 2f, (row - 1) / 2f, -10);
+		camera.transform.position = position;
+		aspectRatio = camera.aspect;
+		previousAspectRatio = aspectRatio;
+		if (camera.orthographic){
+			setCameraSize();
+		}
     }
 
     // Update is called once per frame
     void Update()
     {
+		if(camera.orthographic && camera.aspect != previousAspectRatio){
+			aspectRatio = camera.aspect;
+			previousAspectRatio = aspectRatio;
+			setCameraSize();
+		}
         updateSlotGraphic();
     }
+
 
     public void updateSlotGraphic()
     {
@@ -64,4 +82,11 @@ public class SlotGrid : MonoBehaviour
         
         column = c;
     }
+
+	private void setCameraSize()
+	{
+		float rowBased = row / 2f;
+		float columnBased = column / (2f * camera.aspect);
+		camera.orthographicSize = Mathf.Max(rowBased, columnBased);
+	}
 }
