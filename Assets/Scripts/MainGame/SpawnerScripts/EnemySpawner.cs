@@ -8,6 +8,8 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private Enemy EnemyPrefab;
 
+	[SerializeField] private GameObject enemies = null;
+
     [SerializeField] private int enemyPerWave = 0;
 
     public float timeBetween = 0;
@@ -27,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Enemy_Factory = new EnemyFactory(EnemyPrefab);
+        Enemy_Factory = new EnemyFactory(EnemyPrefab, enemies);
         SpawnPoints = GameObject.FindGameObjectWithTag("EnemySpawnPoints").GetComponentsInChildren<Transform>();
         needSpawnPoint = true;
     }
