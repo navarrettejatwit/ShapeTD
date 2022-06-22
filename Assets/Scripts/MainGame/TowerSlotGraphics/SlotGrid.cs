@@ -5,6 +5,9 @@ using UnityEngine;
 public class SlotGrid : MonoBehaviour
 {
     public GameObject SlotGraphic = null;
+    
+    //to do all Gameobject map stuff and matrix stuff go to Map Class
+    //to more graphic matrixes for map 
 
     public GameObject Parent = null;
 
