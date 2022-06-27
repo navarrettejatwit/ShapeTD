@@ -12,6 +12,8 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private int enemyPerWave = 0;
 
+    //[SerializeField] private GameObject EnemySpawnPoints;
+
     public float timeBetween = 0;
 
     public float spawnTime = 0;
