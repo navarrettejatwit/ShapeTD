@@ -52,7 +52,6 @@ public class TowerSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //solve Highlight tower slot for mouse hover.
         //To do if build tower buttons pressed and wait or not pressed.
         if (Input.GetMouseButtonDown(0))
         {
@@ -62,24 +61,30 @@ public class TowerSpawner : MonoBehaviour
             {
                 //RaycastHit hit;
                 //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                //make a way for this paint mode not turn off until tower is place or cancelled.
                 if (Physics.Raycast(ray, out hit))
                 {
                     Transform objectHit = hit.transform;
                     int i = (int) objectHit.position.x;
                     int j = (int) objectHit.position.y;
-                    bool fill = spawnTower(objectHit);
-                    VirtualSlotMatrix[i, j].setIsFilled(fill);
+                    if (VirtualSlotMatrix[i, j].getIsFilled() == false)
+                    {
+                        spawnTower(objectHit, i, j);
+                    }
+                    //else
+                    //{
+                        //to do spawn text to tell player, "you can't build here."
+                    //}
+                    //VirtualSlotMatrix[i, j].setIsFilled(fill);
                     Debug.Log("spawnedTower");
-                    canBuildTower = false;
+                    //canBuildTower = false;
                 }
             }
 
             if (canSellTower)
             {
+                //handle accidentle press // needs more testing
                 if (Physics.Raycast(ray, out hit, 10f, layermask))
                 {
-                    //make a way for this paint mode not turn off until tower is sold or cancellation.
                     Transform objectHit = hit.transform;
                     int i = (int) objectHit.position.x;
                     int j = (int) objectHit.position.y;
@@ -94,28 +99,6 @@ public class TowerSpawner : MonoBehaviour
 
 
         }
-
-        //if (Input.GetMouseButtonDown(1))
-        //{
-            //if (canSellTower)
-            //{
-                //RaycastHit hit;
-                //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                //if (Physics.Raycast(ray, out hit))
-                //{
-                    //Transform objectHit = hit.transform;
-                    //int i = (int) objectHit.position.x;
-                    //int j = (int) objectHit.position.y;
-                    //to do get towers income at reduced income price.
-                    //bool notFilled = sellTower();
-                    //VirtualSlotMatrix[i, j].setIsFilled(notFilled);
-                    //Destroy(hit.transform.gameObject);
-                    //Debug.Log("SellTower");
-                    //canSellTower = false;
-                //}
-            //}
-        //}
-
     }
 
     public void TowerBuildButtonClicked()
@@ -123,11 +106,12 @@ public class TowerSpawner : MonoBehaviour
         canBuildTower = true;
     }
 
-    public bool spawnTower(Transform coord)
+    public void spawnTower(Transform coord, int i, int j)
     {
         Tower_Factory.setSpawnPoint(coord);
         Tower NewTower = (Tower) Tower_Factory.produce();
-        return true;
+        VirtualSlotMatrix[i, j].setIsFilled(true);
+        canBuildTower = false;
     }
 
     public void sellTowerButtonClicked()
