@@ -37,6 +37,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         Enemy_Factory = new EnemyFactory(badGuyPrefabs, badGuys);
         SpawnPoints = GameObject.FindGameObjectWithTag("EnemySpawnPoints").GetComponentsInChildren<Transform>();
         needSpawnPoint = true;
@@ -75,7 +76,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 getSpawnPoint();
                 Enemy_Factory.setSpawnPoint(SpawnPoint);
-                e = (Enemy) Enemy_Factory.produce();
+                e = (BadGuy) Enemy_Factory.produce();
                 //allEnemies.Add(e);
             }
 
@@ -84,12 +85,12 @@ public class EnemySpawner : MonoBehaviour
     }
 
     public List<Enemy> getAllEnemies(){
-     return allEnemies
+        return badGuys;
     }
 
-    public void removeEnemy(Enemy e)
+    public void removeEnemy(BadGuy e)
     {
-        allEnemies.Remove(e);
+        badGuys.Remove(e);
     }
 
     public void getSpawnPoint()
@@ -99,7 +100,7 @@ public class EnemySpawner : MonoBehaviour
             spawnLocation = Random.Range(1, SpawnPoints.Length);
         }
         SpawnPoint = SpawnPoints[spawnLocation];
-    */
+   
     }
 
 }
