@@ -11,11 +11,11 @@ public class TowerSpawner : MonoBehaviour
     public GameObject SlotGrid = null;
 
     public int row;
-    
+
     public int column;
 
     private SlotGrid sg;
-    
+
     [SerializeField] private Tower TowerPrefab;
 
     [SerializeField] private GameObject towers = null;
@@ -23,12 +23,17 @@ public class TowerSpawner : MonoBehaviour
     //private float buildtime = 0;
 
     private TowerFactory Tower_Factory;
-    
+
     private bool canBuildTower = false;
+
+    private bool canSellTower = false;
+
+    private int layermask = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        layermask = LayerMask.GetMask("Graphics");
         VirtualSlotMatrix = new Cell[row, column];
         sg = SlotGrid.GetComponent<SlotGrid>();
         sg.setRow(row);
@@ -40,6 +45,7 @@ public class TowerSpawner : MonoBehaviour
                 VirtualSlotMatrix[i, j] = new Cell(i, j, false);
             }
         }
+
         Tower_Factory = new TowerFactory(TowerPrefab, towers);
     }
 
@@ -47,56 +53,70 @@ public class TowerSpawner : MonoBehaviour
     void Update()
     {
         //To do if build tower buttons pressed and wait or not pressed.
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (canBuildTower)
             {
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit))
                 {
                     Transform objectHit = hit.transform;
                     int i = (int) objectHit.position.x;
                     int j = (int) objectHit.position.y;
-                    bool fill = spawnTower(objectHit);
-                    VirtualSlotMatrix[i, j].setIsFilled(fill);
+                    if (VirtualSlotMatrix[i, j].getIsFilled() == false)
+                    {
+                        spawnTower(objectHit, i, j);
+                    }
+                    //else
+                    //{
+                        //to do spawn text to tell player, "you can't build here."
+                    //}
                     Debug.Log("spawnedTower");
-                    canBuildTower = false;
                 }
             }
-        }
 
-        if (Input.GetMouseButtonDown(2))
-        {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit))
+            if (canSellTower)
             {
-                Transform objectHit = hit.transform;
-                int i = (int) objectHit.position.x;
-                int j = (int) objectHit.position.y;
-                bool notFilled = sellTower(objectHit);
-                VirtualSlotMatrix[i, j].setIsFilled(notFilled);
+                //handle accidentle press // needs more testing
+                if (Physics.Raycast(ray, out hit, 10f, layermask))
+                {
+                    Transform objectHit = hit.transform;
+                    int i = (int) objectHit.position.x;
+                    int j = (int) objectHit.position.y;
+                    //to do get towers income at reduced income price.
+                    bool notFilled = sellTower();
+                    VirtualSlotMatrix[i, j].setIsFilled(notFilled);
+                    Destroy(hit.transform.gameObject);
+                    Debug.Log("SellTower");
+                    canSellTower = false;
+                }
             }
+
+
         }
-        
     }
 
     public void TowerBuildButtonClicked()
     {
         canBuildTower = true;
     }
-    
-    public bool spawnTower(Transform coord)
+
+    public void spawnTower(Transform coord, int i, int j)
     {
         Tower_Factory.setSpawnPoint(coord);
         Tower NewTower = (Tower) Tower_Factory.produce();
-        return true;
+        VirtualSlotMatrix[i, j].setIsFilled(true);
+        canBuildTower = false;
     }
 
-    public bool sellTower(Transform coord)
+    public void sellTowerButtonClicked()
     {
-        //To Do//Tower Destroy Method Call; //During Restart All Towers Must Be Destroyed
+        canSellTower = true;
+    }
+
+    public bool sellTower()
+    {
         return false;
     }
 
