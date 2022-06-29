@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    //private List<Enemy> allEnemies = new List<Enemy>();
 
-    [SerializeField] private GameObject enemies = null;
+    [SerializeField] private Enemy EnemyPrefab;
+
+    [SerializeField] private Enemy EnemyPrefab1;
+
+	  [SerializeField] private GameObject enemies = null;
 
     [SerializeField] private int enemyPerWave = 0;
-
-    [SerializeField] private GameObject EnemySpawnPoints;
 
     public float timeBetween = 0;
 
@@ -18,27 +19,25 @@ public class EnemySpawner : MonoBehaviour
 
     private EnemyFactory Enemy_Factory;
 
-    private Transform[] SpawnPoints = null;
+    private EnemyFactory Enemy_Factory1;
+
+    public Transform[] SpawnPoints = null;
 
     private Transform SpawnPoint;
 
     private bool needSpawnPoint = false;
 
-    private int spawnLocation = 0;
-
-
-
-    public List<BadGuy> badGuys;
-    public List<GameObject> badGuyPrefabs;
-
-
-
-
     // Start is called before the first frame update
     void Start()
     {
-
-        Enemy_Factory = new EnemyFactory(badGuyPrefabs, badGuys);
+        /**Enemy factory constructor called.
+         *
+         * EnemyPrefab: Light Enemy
+         * EnemyPrefab1: Heavy Enemy
+         */
+        Enemy_Factory = new EnemyFactory(EnemyPrefab, enemies);
+        Enemy_Factory1 = new EnemyFactory(EnemyPrefab1, enemies);
+        
         SpawnPoints = GameObject.FindGameObjectWithTag("EnemySpawnPoints").GetComponentsInChildren<Transform>();
         needSpawnPoint = true;
     }
@@ -46,18 +45,8 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*spawnTime -= Time.deltaTime;
-        spawnWave();*/
-
-        foreach (BadGuy badguy in badGuys)
-        {
-            if (badguy.isSpawned == false && badguy.spawnTime <= Time.time)
-            {
-                Instantiate(badGuyPrefabs[(int)badguy.enemyType], transform.GetChild(badguy.Spawner).transform);
-                badguy.isSpawned = true;
-            }
-        }
-
+        spawnTime -= Time.deltaTime;
+        spawnWave();
     }
 
     //Would reset the spawner, but might not be needed.
@@ -71,26 +60,27 @@ public class EnemySpawner : MonoBehaviour
     {
         if (spawnTime <= 0f)
         {
-            BadGuy e;
+            Enemy e;
             for (int i = 0; i < enemyPerWave; i++)
             {
                 getSpawnPoint();
-                Enemy_Factory.setSpawnPoint(SpawnPoint);
-                e = (BadGuy) Enemy_Factory.produce();
-                //allEnemies.Add(e);
+                if (i > 10)
+                {
+                    Enemy_Factory1.setSpawnPoint(SpawnPoint);
+                    e = (Enemy) Enemy_Factory1.produce();
+                    e.transform.rotation = Quaternion.Euler(new Vector3(180, 90, 180));
+                }
+                else
+                {
+                    Enemy_Factory.setSpawnPoint(SpawnPoint);
+                    e = (Enemy) Enemy_Factory.produce();
+                    e.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                }
+
             }
 
             spawnTime = timeBetween;
         }
-    }
-
-    public List<Enemy> getAllEnemies(){
-        return badGuys;
-    }
-
-    public void removeEnemy(BadGuy e)
-    {
-        badGuys.Remove(e);
     }
 
     public void getSpawnPoint()

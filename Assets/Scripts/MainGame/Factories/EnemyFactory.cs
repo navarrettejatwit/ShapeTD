@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class EnemyFactory : Factory
 {
-    private BadGuy e;
-    
+    private Enemy e;
+
     private Transform SpawnPoint;
 
-    private GameObject badGuys;
+    private GameObject Enemies;
 
-    public EnemyFactory(BadGuy e, GameObject badGuys)
+    public EnemyFactory(Enemy e, GameObject Enemies)
     {
         this.e = e;
-        this.badGuys = badGuys;
+        this.Enemies = Enemies;
     }
 
     public Product produce()
     {
-        return spawn(e, SpawnPoint, badGuys);
+        return spawn(e, SpawnPoint, Enemies);
     }
 
-    private Product spawn(BadGuy e, Transform esp, GameObject badGuys)
+    private Product spawn(Enemy e, Transform esp, GameObject Enemies)
     {
-        return Object.Instantiate(e, new Vector3(esp.position.x, esp.position.y, 0f), Quaternion.identity, badGuys.transform);
+        return Object.Instantiate(e, new Vector3(esp.position.x, esp.position.y, 0f), Quaternion.identity, Enemies.transform);
     }
 
     public void setSpawnPoint(Transform esp)
