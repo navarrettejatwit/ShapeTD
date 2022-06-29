@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    //private List<Enemy> allEnemies = new List<Enemy>();
 
     [SerializeField] private Enemy EnemyPrefab;
 
     [SerializeField] private Enemy EnemyPrefab1;
 
-	[SerializeField] private GameObject enemies = null;
+	  [SerializeField] private GameObject enemies = null;
 
     [SerializeField] private int enemyPerWave = 0;
 
@@ -28,8 +27,6 @@ public class EnemySpawner : MonoBehaviour
 
     private bool needSpawnPoint = false;
 
-    private int i = 0;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +35,6 @@ public class EnemySpawner : MonoBehaviour
          * EnemyPrefab: Light Enemy
          * EnemyPrefab1: Heavy Enemy
          */
-
         Enemy_Factory = new EnemyFactory(EnemyPrefab, enemies);
         Enemy_Factory1 = new EnemyFactory(EnemyPrefab1, enemies);
         
@@ -80,6 +76,7 @@ public class EnemySpawner : MonoBehaviour
                     e = (Enemy) Enemy_Factory.produce();
                     e.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
                 }
+
             }
 
             spawnTime = timeBetween;
@@ -90,9 +87,10 @@ public class EnemySpawner : MonoBehaviour
     {
         if (needSpawnPoint)
         {
-            i = Random.Range(1, SpawnPoints.Length);
+            spawnLocation = Random.Range(1, SpawnPoints.Length);
         }
-        SpawnPoint = SpawnPoints[i];
+        SpawnPoint = SpawnPoints[spawnLocation];
+   
     }
 
 }

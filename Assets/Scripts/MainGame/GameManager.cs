@@ -37,6 +37,20 @@ public class GameManager : MonoBehaviour
     {
         return _instance;
     }
+
+    //health bar
+    /*public void updatePlayerHealth(int health)
+    {
+
+        if (health > 0)
+        {
+            playText.text = "x" + health;
+        }
+        else playText.text = "0";
+
+    }*/
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -104,5 +118,24 @@ public class GameManager : MonoBehaviour
         float columnBased = column / (2f * camera.aspect);
         camera.orthographicSize = Mathf.Max(rowBased, columnBased);
     }
-    
+
+    /*
+    public void deathPanelSwitch(bool state)
+    {
+        deathPanel.SetActive(state);
+    }
+    */
+
+
+    public void Reset()
+    {
+        //player.Reset();
+        //spawner.Reset();
+        //house.Reset();
+        //GameManager.instance().updateHouseHealth(house.maxHealth);
+        //GameManager.instance().updatePlayerHealth(player.maxHealth);
+        //deathPanelSwitch(false);  
+        Time.timeScale = 1f;
+    }
+
 }
