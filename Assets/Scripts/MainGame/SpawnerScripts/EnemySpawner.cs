@@ -6,13 +6,11 @@ public class EnemySpawner : MonoBehaviour
 {
     //private List<Enemy> allEnemies = new List<Enemy>();
 
-    [SerializeField] private Enemy EnemyPrefab;
-
-	[SerializeField] private GameObject enemies = null;
+    [SerializeField] private GameObject enemies = null;
 
     [SerializeField] private int enemyPerWave = 0;
 
-    //[SerializeField] private GameObject EnemySpawnPoints;
+    [SerializeField] private GameObject EnemySpawnPoints;
 
     public float timeBetween = 0;
 
@@ -20,18 +18,26 @@ public class EnemySpawner : MonoBehaviour
 
     private EnemyFactory Enemy_Factory;
 
-    public Transform[] SpawnPoints = null;
+    private Transform[] SpawnPoints = null;
 
     private Transform SpawnPoint;
 
     private bool needSpawnPoint = false;
 
-    private int i = 0;
+    private int spawnLocation = 0;
+
+
+
+    public List<BadGuy> badGuys;
+    public List<GameObject> badGuyPrefabs;
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        Enemy_Factory = new EnemyFactory(EnemyPrefab, enemies);
+        Enemy_Factory = new EnemyFactory(badGuyPrefabs, badGuys);
         SpawnPoints = GameObject.FindGameObjectWithTag("EnemySpawnPoints").GetComponentsInChildren<Transform>();
         needSpawnPoint = true;
     }
@@ -39,8 +45,18 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        spawnTime -= Time.deltaTime;
-        spawnWave();
+        /*spawnTime -= Time.deltaTime;
+        spawnWave();*/
+
+        foreach (BadGuy badguy in badGuys)
+        {
+            if (badguy.isSpawned == false && badguy.spawnTime <= Time.time)
+            {
+                Instantiate(badGuyPrefabs[(int)badguy.enemyType], transform.GetChild(badguy.Spawner).transform);
+                badguy.isSpawned = true;
+            }
+        }
+
     }
 
     //Would reset the spawner, but might not be needed.
@@ -54,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (spawnTime <= 0f)
         {
-            Enemy e;
+            BadGuy e;
             for (int i = 0; i < enemyPerWave; i++)
             {
                 getSpawnPoint();
@@ -67,22 +83,23 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    //public List<Enemy> getAllEnemies(){
-        // return allEnemies
-    //}
+    public List<Enemy> getAllEnemies(){
+     return allEnemies
+    }
 
-    //public void removeEnemy(Enemy e)
-    //{
-        //allEnemies.Remove(e);
-    //}
+    public void removeEnemy(Enemy e)
+    {
+        allEnemies.Remove(e);
+    }
 
     public void getSpawnPoint()
     {
         if (needSpawnPoint)
         {
-            i = Random.Range(1, SpawnPoints.Length);
+            spawnLocation = Random.Range(1, SpawnPoints.Length);
         }
-        SpawnPoint = SpawnPoints[i];
+        SpawnPoint = SpawnPoints[spawnLocation];
+    */
     }
 
 }
