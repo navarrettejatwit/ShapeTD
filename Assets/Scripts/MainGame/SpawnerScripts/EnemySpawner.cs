@@ -8,17 +8,19 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private Enemy EnemyPrefab;
 
+    [SerializeField] private Enemy EnemyPrefab1;
+
 	[SerializeField] private GameObject enemies = null;
 
     [SerializeField] private int enemyPerWave = 0;
-
-    //[SerializeField] private GameObject EnemySpawnPoints;
 
     public float timeBetween = 0;
 
     public float spawnTime = 0;
 
     private EnemyFactory Enemy_Factory;
+
+    private EnemyFactory Enemy_Factory1;
 
     public Transform[] SpawnPoints = null;
 
@@ -31,7 +33,15 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /**Enemy factory constructor called.
+         *
+         * EnemyPrefab: Light Enemy
+         * EnemyPrefab1: Heavy Enemy
+         */
+
         Enemy_Factory = new EnemyFactory(EnemyPrefab, enemies);
+        Enemy_Factory1 = new EnemyFactory(EnemyPrefab1, enemies);
+        
         SpawnPoints = GameObject.FindGameObjectWithTag("EnemySpawnPoints").GetComponentsInChildren<Transform>();
         needSpawnPoint = true;
     }
@@ -58,23 +68,21 @@ public class EnemySpawner : MonoBehaviour
             for (int i = 0; i < enemyPerWave; i++)
             {
                 getSpawnPoint();
-                Enemy_Factory.setSpawnPoint(SpawnPoint);
-                e = (Enemy) Enemy_Factory.produce();
-                //allEnemies.Add(e);
+                if (i > 10)
+                {
+                    Enemy_Factory1.setSpawnPoint(SpawnPoint);
+                    e = (Enemy) Enemy_Factory1.produce();
+                }
+                else
+                {
+                    Enemy_Factory.setSpawnPoint(SpawnPoint);
+                    e = (Enemy) Enemy_Factory.produce();
+                }
             }
 
             spawnTime = timeBetween;
         }
     }
-
-    //public List<Enemy> getAllEnemies(){
-        // return allEnemies
-    //}
-
-    //public void removeEnemy(Enemy e)
-    //{
-        //allEnemies.Remove(e);
-    //}
 
     public void getSpawnPoint()
     {
