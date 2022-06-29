@@ -72,11 +72,13 @@ public class EnemySpawner : MonoBehaviour
                 {
                     Enemy_Factory1.setSpawnPoint(SpawnPoint);
                     e = (Enemy) Enemy_Factory1.produce();
+                    e.transform.rotation = Quaternion.Euler(new Vector3(180, 90, 180));
                 }
                 else
                 {
                     Enemy_Factory.setSpawnPoint(SpawnPoint);
                     e = (Enemy) Enemy_Factory.produce();
+                    e.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
                 }
             }
 
