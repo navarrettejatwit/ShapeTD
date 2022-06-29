@@ -59,6 +59,8 @@ public class TowerSpawner : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (canBuildTower)
             {
+                //RaycastHit hit;
+                //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit))
                 {
                     Transform objectHit = hit.transform;
@@ -72,7 +74,9 @@ public class TowerSpawner : MonoBehaviour
                     //{
                         //to do spawn text to tell player, "you can't build here."
                     //}
+                    //VirtualSlotMatrix[i, j].setIsFilled(fill);
                     Debug.Log("spawnedTower");
+                    //canBuildTower = false;
                 }
             }
 
