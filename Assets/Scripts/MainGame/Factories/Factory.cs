@@ -4,7 +4,6 @@ using UnityEngine;
 
 public interface Factory
 {
-
     Product produce();
 
 }
