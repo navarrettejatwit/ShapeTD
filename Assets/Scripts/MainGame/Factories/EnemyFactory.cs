@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyFactory : Factory
 {
     private Enemy e;
-    
+
     private Transform SpawnPoint;
 
     private GameObject enemies;
