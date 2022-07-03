@@ -37,6 +37,21 @@ public class GameManager : MonoBehaviour
     {
         return _instance;
     }
+
+    public Player player;
+
+
+    public void updatePlayerHealth(int health)
+    {
+
+        /*if (health > 0)
+        {
+            playText.text = "x" + health;
+        }
+        else playText.text = "0";*/
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,7 +90,10 @@ public class GameManager : MonoBehaviour
         if (camera.orthographic){
             setCameraSize();
         }
-        
+
+        //player.Reset();
+      
+
     }
 
     // Update is called once per frame

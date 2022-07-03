@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[System.Serializable]
 public class Tower : MonoBehaviour, Product
 {
-    // Start is called before the first frame update
-    void Start()
+
+
+    public TowerType towerType;
+    public bool isSpawned;
+
+}
+
+
+
+
+    public enum TowerType
     {
-        
+        Tower_Basic,
+        Tower_SpeedShooter
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}

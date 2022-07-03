@@ -51,6 +51,8 @@ public class EnemySpawner : MonoBehaviour
     {
         spawnTime -= Time.deltaTime;
         spawnWave();
+
+
     }
 
     //Would reset the spawner, but might not be needed.
@@ -71,14 +73,16 @@ public class EnemySpawner : MonoBehaviour
                 if (i > 10)
                 {
                     Enemy_Factory1.setSpawnPoint(SpawnPoint);
-                    e = (Enemy) Enemy_Factory1.produce();
-                    e.transform.rotation = Quaternion.Euler(new Vector3(180, 90, 180));
+                    e = (Enemy) Enemy_Factory1.produce();                        //180
+                    e.transform.rotation = Quaternion.Euler(new Vector3(180, 90,(float) 2));
+                    //e.setSpeed(2);
                 }
                 else
                 {
                     Enemy_Factory.setSpawnPoint(SpawnPoint);
                     e = (Enemy) Enemy_Factory.produce();
-                    e.transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+                    e.transform.rotation = Quaternion.Euler(new Vector3(0, 180, (float) 2));
+                    //e.setSpeed(1);
                 }
             }
 
