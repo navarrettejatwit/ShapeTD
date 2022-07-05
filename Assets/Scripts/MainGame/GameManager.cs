@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         if (health > 0)
         {
-            playText.text = "x" + health;
+            playText.text = "Health: x" + health;
         }
         else playText.text = "0";
 
