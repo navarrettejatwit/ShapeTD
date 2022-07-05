@@ -13,7 +13,7 @@ public class Enemy_Basci : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {                                                       //2f
-        this.transform.rotation = Quaternion.Euler(0f, 180f, 2f);
+        this.transform.rotation = Quaternion.Euler(0f, 180f,0f);
         speed = UnityEngine.Random.Range(minSpeed, maxSpeed);
     }
 
@@ -25,7 +25,13 @@ public class Enemy_Basci : MonoBehaviour
 
     void FixedUpdate()
     {                                       //-1f                                      , 0.1f)
-        this.transform.Translate(new Vector3(1f, UnityEngine.Random.Range(-0.1f, 0.1f)) * speed * Time.deltaTime);
+        this.transform.Translate(new Vector3(1f, UnityEngine.Random.Range(-0.1f, 0.1f),0f) * speed * Time.deltaTime);
+
+        /*if (this.gameObject.transform.position.x <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+*/
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

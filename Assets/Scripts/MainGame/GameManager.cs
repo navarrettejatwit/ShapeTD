@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -39,16 +40,17 @@ public class GameManager : MonoBehaviour
     }
 
     public Player player;
+    public TextMeshProUGUI playText;
 
 
     public void updatePlayerHealth(int health)
     {
 
-        /*if (health > 0)
+        if (health > 0)
         {
             playText.text = "x" + health;
         }
-        else playText.text = "0";*/
+        else playText.text = "0";
 
     }
 

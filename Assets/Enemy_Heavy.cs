@@ -10,12 +10,26 @@ public class Enemy_Heavy : MonoBehaviour
     public int damage;
     public int health;
 
+    //public Player p;
+
+
+
+
     // Start is called before the first frame update
+
+    //enemy need access to player to call the take damage method
     void Start()
-    {                                                       //0f
-        this.transform.rotation = Quaternion.Euler(0f, 180f, 2f);
+    {
+
+        //p = GameObject.Find("Player");
+        //p = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        this.transform.rotation = Quaternion.Euler(0f, 180f,0f);
         speed = UnityEngine.Random.Range(minSpeed, maxSpeed);
     }
+
+
+
+
 
     // Update is called once per frame
     void Update()
@@ -24,18 +38,30 @@ public class Enemy_Heavy : MonoBehaviour
     }
 
     void FixedUpdate()
-    {                                       //-1f                 
-        this.transform.Translate(new Vector3(1f, UnityEngine.Random.Range(-0.1f, 0.1f)) * speed * Time.deltaTime);
+    {
+
+        //Debug.Log(p);
+
+        //-1f                 
+        this.transform.Translate(new Vector3(1f, UnityEngine.Random.Range(-0.1f, 0.1f),0f) * speed * Time.deltaTime);
+        
+        //
+
+        /*if (this.gameObject.transform.position.x <= 0)
+        {
+            Destroy(this.gameObject);
+            p.takeDamage(damage);
+        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        /*if (collision.tag == "Player")
+        if (collision.tag == "Player")
         {
             Player p = collision.gameObject.GetComponent<Player>();
             p.takeDamage(damage);
             Destroy(this.gameObject);
-        }*/
+        }
 
 
     }
