@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeavyEnemy : MonoBehaviour
+//Fires rapidily, but has reduced damage.
+public class TowerRapidFire : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
