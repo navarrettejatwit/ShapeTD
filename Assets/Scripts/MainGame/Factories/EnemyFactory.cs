@@ -23,7 +23,7 @@ public class EnemyFactory : Factory
 
     private Product spawn(Enemy e, Transform esp, GameObject enemies)
     {
-        return Object.Instantiate(e, new Vector3(esp.position.x, esp.position.y, 0f), Quaternion.identity, enemies.transform);
+        return Object.Instantiate(e, new Vector3(esp.position.x, esp.position.y, esp.position.z), Quaternion.identity, enemies.transform);
     }
 
     public void setSpawnPoint(Transform esp)

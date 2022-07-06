@@ -30,7 +30,7 @@ public class SlotGrid : MonoBehaviour
         for (int i = 0; i < row; i++)
         {
             for (int j = 0; j < column; j++)
-            {
+            {                                       
                 Vector3 Position = new Vector3(i, j, 0);
                 SlotMatrix[i, j] = Instantiate(SlotGraphic, Position, Quaternion.identity, Parent.transform);
             }
