@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class TowerSpawner : MonoBehaviour
 {
-    //private List<Tower> allTowers = new List<Tower>();
-
     public Cell[,] VirtualSlotMatrix = null;
 
     public GameObject SlotGrid = null;
@@ -16,15 +14,25 @@ public class TowerSpawner : MonoBehaviour
 
     private SlotGrid sg;
 
-    [SerializeField] private Tower TowerPrefab;
+    [SerializeField] private Tower StandardTowerPrefab;
+
+    [SerializeField] private Tower RapidFireTowerPrefab;
+
+    [SerializeField] private Tower SplashTowerPrefab;
+
+    [SerializeField] private Tower HeavyTowerPrefab;
+
+    [SerializeField] private Tower RayTowerPrefab;
 
     [SerializeField] private GameObject towers = null;
 
     //private float buildtime = 0;
 
-    private TowerFactory Tower_Factory;
+    private TowerFactory[] TowerFactoryArray = new TowerFactory[5];
 
     private bool canBuildTower = false;
+
+    private int towerType = 0;
 
     private bool canSellTower = false;
 
@@ -46,7 +54,11 @@ public class TowerSpawner : MonoBehaviour
             }
         }
 
-        Tower_Factory = new TowerFactory(TowerPrefab, towers);
+        TowerFactoryArray[0] = new TowerFactory(StandardTowerPrefab, towers);
+        TowerFactoryArray[1] = new TowerFactory(RapidFireTowerPrefab, towers);
+        TowerFactoryArray[2] = new TowerFactory(SplashTowerPrefab, towers);
+        TowerFactoryArray[3] = new TowerFactory(HeavyTowerPrefab, towers);
+        TowerFactoryArray[4] = new TowerFactory(RayTowerPrefab, towers);
     }
 
     // Update is called once per frame
@@ -72,13 +84,11 @@ public class TowerSpawner : MonoBehaviour
                     //{
                         //to do spawn text to tell player, "you can't build here."
                     //}
-                    Debug.Log("spawnedTower");
                 }
             }
 
             if (canSellTower)
             {
-                //handle accidentle press // needs more testing
                 if (Physics.Raycast(ray, out hit, 10f, layermask))
                 {
                     Transform objectHit = hit.transform;
@@ -88,7 +98,6 @@ public class TowerSpawner : MonoBehaviour
                     bool notFilled = sellTower();
                     VirtualSlotMatrix[i, j].setIsFilled(notFilled);
                     Destroy(hit.transform.gameObject);
-                    Debug.Log("SellTower");
                     canSellTower = false;
                 }
             }
@@ -97,15 +106,41 @@ public class TowerSpawner : MonoBehaviour
         }
     }
 
-    public void TowerBuildButtonClicked()
+    public void TowerBuildButton0Clicked()
     {
         canBuildTower = true;
+        towerType = 0;
+    }
+
+    public void TowerBuildButton1Clicked()
+    {
+        canBuildTower = true;
+        towerType = 1;
+    }
+
+    public void TowerBuildButton2Clicked()
+    {
+        canBuildTower = true;
+        towerType = 2;
+    }
+
+    public void TowerBuildButton3Clicked()
+    {
+        canBuildTower = true;
+        towerType = 3;
+    }
+
+    public void TowerBuildButton4Clicked()
+    {
+        canBuildTower = true;
+        towerType = 4;
     }
 
     public void spawnTower(Transform coord, int i, int j)
     {
-        Tower_Factory.setSpawnPoint(coord);
-        Tower NewTower = (Tower) Tower_Factory.produce();
+        
+        TowerFactoryArray[towerType].setSpawnPoint(coord);
+        Tower NewTower = (Tower) TowerFactoryArray[towerType].produce();
         VirtualSlotMatrix[i, j].setIsFilled(true);
         canBuildTower = false;
     }

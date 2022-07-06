@@ -31,7 +31,7 @@ public class SlotGrid : MonoBehaviour
         {
             for (int j = 0; j < column; j++)
             {                                       
-                Vector3 Position = new Vector3(i, j, 0);
+                Vector3 Position = new Vector3(i, j, -1);
                 SlotMatrix[i, j] = Instantiate(SlotGraphic, Position, Quaternion.identity, Parent.transform);
             }
         }
@@ -52,7 +52,6 @@ public class SlotGrid : MonoBehaviour
             for (int j = 0; j < column; j++)
             {
                 VirtualSlotMatrix[i, j] = ts.getVirtualSlotMatrix()[i, j];
-                //future highlight graphic build mode.
             }
         }
     }
