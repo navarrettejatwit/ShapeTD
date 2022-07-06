@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
         return _instance;
     }
 
+
     public Player player;
     public TextMeshProUGUI playText;
 
@@ -150,5 +151,4 @@ public class GameManager : MonoBehaviour
         }
         return Tile;
     }
-    
 }
