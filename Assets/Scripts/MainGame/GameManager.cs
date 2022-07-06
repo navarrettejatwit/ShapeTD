@@ -7,11 +7,13 @@ public class GameManager : MonoBehaviour
 {
 
     private static GameManager _instance = null;
-
-    [SerializeField] private GameObject graphTile = null;
-
-    [SerializeField] private GameObject graphTile1 = null;
     
+    [SerializeField] private GameObject[] TileArray = new GameObject [10];
+    
+    [SerializeField] private GameObject[] TileArray1 = new GameObject [10];
+
+    [SerializeField] private GameObject graphTile2 = null;
+
     [SerializeField] private GameObject MapContainer = null;
 
     [SerializeField] private Camera camera;
@@ -59,7 +61,8 @@ public class GameManager : MonoBehaviour
     {
         map = new GameObject[row, column];
         bool makeGreen = false;
-        
+        GameObject graphTile;
+
         for (int i = 0; i < row; i++)
         {
             // Start for Row
@@ -70,18 +73,23 @@ public class GameManager : MonoBehaviour
             {
                 //Start for Column
                 Vector3 Position = new Vector3(i, j, 0);
-                if (makeGreen)
+                if (j == 0) map[i, j] = Instantiate(graphTile2, Position, Quaternion.identity, MapContainer.transform);
+                if (j == column - 1) map[i, j] = Instantiate(graphTile2, Position, Quaternion.identity, MapContainer.transform);
+                if (makeGreen && j > 0 && j < row-1)
                 {
-                    map[i, j] = Instantiate(graphTile1, Position, Quaternion.identity, MapContainer.transform);
+                    graphTile = spawnDecorTile(makeGreen);
+                    map[i, j] = Instantiate(graphTile, Position, Quaternion.identity, MapContainer.transform);
                     makeGreen = false;
+
                 }
-                else
+                else if (!makeGreen && j > 0 && j < row-1)
                 {
+                    graphTile = spawnDecorTile(makeGreen);
                     map[i, j] = Instantiate(graphTile, Position, Quaternion.identity, MapContainer.transform);
                     makeGreen = true;
+                    
                 }
-
-                map[i, j].transform.rotation = Quaternion.Euler(new Vector3(270, 0, 0));
+                    map[i, j].transform.rotation = Quaternion.Euler(new Vector3(270, 0, 0));
             }
         }
 
@@ -123,6 +131,24 @@ public class GameManager : MonoBehaviour
         float rowBased = row / 2f;
         float columnBased = column / (2f * camera.aspect);
         camera.orthographicSize = Mathf.Max(rowBased, columnBased);
+    }
+    
+    private GameObject spawnDecorTile(bool makeGreen)
+    {
+        GameObject Tile;
+        int i = 0;
+        if (makeGreen)
+        {
+            i = Random.Range(0, TileArray.Length);
+            Tile = TileArray[i];
+
+        }
+        else
+        {
+            i = Random.Range(0, TileArray1.Length);
+            Tile = TileArray1[i];
+        }
+        return Tile;
     }
     
 }
