@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
 
     private EnemyFactory Enemy_Factory1;
 
-    public Transform[] SpawnPoints = null;
+    private Transform[] SpawnPoints = null;
 
     private Transform SpawnPoint;
 
@@ -51,6 +51,8 @@ public class EnemySpawner : MonoBehaviour
     {
         spawnTime -= Time.deltaTime;
         spawnWave();
+
+
     }
 
     //Would reset the spawner, but might not be needed.
@@ -71,7 +73,7 @@ public class EnemySpawner : MonoBehaviour
                 if (i > 10)
                 {
                     Enemy_Factory1.setSpawnPoint(SpawnPoint);
-                    e = (Enemy) Enemy_Factory1.produce();
+                    e = (Enemy) Enemy_Factory1.produce();                        
                     e.transform.rotation = Quaternion.Euler(new Vector3(180, 90, 180));
                 }
                 else
