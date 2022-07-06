@@ -9,8 +9,8 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     public int health;
     public int maxHealth;
-
-
+    [SerializeField] private GameObject GameOverMenu = null;
+    
 // Start is called before the first frame update
 void Start()
 {
@@ -48,10 +48,9 @@ void Start()
         {
             //player dies
             this.gameObject.SetActive(false);
-            //GameManager.instance().deathPanelSwitch(true);
+            GameOverMenu.gameObject.SetActive(true);
             Time.timeScale = 0f;
         }
     }
-
-
+    
 }
