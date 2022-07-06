@@ -6,18 +6,16 @@ public class Player : MonoBehaviour
 
     
 {
-
-
-    private Rigidbody2D rb;
+    private Rigidbody rb;
     public int health;
     public int maxHealth;
 
 
 // Start is called before the first frame update
 void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+{
+    rb = GetComponent<Rigidbody>();
+}
 
     // Update is called once per frame
     void Update()
