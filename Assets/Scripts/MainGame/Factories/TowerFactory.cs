@@ -23,7 +23,7 @@ public class TowerFactory : Factory
 
     private Product spawn(Tower t, Transform tsp, GameObject towers)
     {
-        return Object.Instantiate(t, new Vector3(tsp.position.x, tsp.position.y, 0f), Quaternion.identity, towers.transform);
+        return Object.Instantiate(t, new Vector3(tsp.position.x, tsp.position.y-0.2f, tsp.position.z), Quaternion.identity, towers.transform);
     }
 
     public void setSpawnPoint(Transform tsp)
