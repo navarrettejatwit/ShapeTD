@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="247365fe-ec18-4f69-ad2d-f68fe8d8f666" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Enemy.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Enemy.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Scenes/MainGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Scenes/MainGame.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Scripts/MainGame/EnemyScripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Scripts/MainGame/EnemyScripts/.idea/.idea.EnemyScripts.dir/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Scripts/MainGame/EnemyScripts/.idea/.idea.EnemyScripts.dir/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Scripts/MainGame/EnemyScripts/.idea/.idea.EnemyScripts.dir/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Scripts/MainGame/EnemyScripts/.idea/.idea.EnemyScripts.dir/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Scripts/MainGame/EnemyScripts/Enemy.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Scripts/MainGame/EnemyScripts/Enemy.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Scripts/MainGame/EnemyScripts/Enemy_Basci.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Scripts/MainGame/EnemyScripts/Enemy_Basci.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Scripts/MainGame/EnemyScripts/Enemy_Heavy.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Scripts/MainGame/EnemyScripts/Enemy_Heavy.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Scripts/MainGame/EnemyScripts/ZombieContoller.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Scripts/MainGame/EnemyScripts/ZombieContoller.cs.meta" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../../../Scripts/MainGame/Player/Player.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../Scripts/MainGame/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ZombieContoller.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Enemy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Enemy_Heavy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Enemy_Basci.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <changedPaths>
+      <option value="$PROJECT_DIR$/../Factories/EnemyFactory.cs" />
+      <option value="$PROJECT_DIR$/../SpawnerScripts/EnemySpawner.cs" />
+      <option value="$PROJECT_DIR$/../Player/Player.cs" />
+      <option value="$PROJECT_DIR$/Enemy_Basci.cs" />
+      <option value="$PROJECT_DIR$/Enemy_Heavy.cs" />
+    </changedPaths>
+  </component>
+  <component name="ProjectId" id="2BXRwyU7hJ7TfNvwBnRTfs2mB25" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="247365fe-ec18-4f69-ad2d-f68fe8d8f666" name="Default Changelist" comment="" />
+      <created>1657050691747</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1657050691747</updated>
+      <workItem from="1657050710063" duration="1312000" />
+      <workItem from="1657116267950" duration="3174000" />
+      <workItem from="1657124202227" duration="67000" />
+      <workItem from="1657126606344" duration="401000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
