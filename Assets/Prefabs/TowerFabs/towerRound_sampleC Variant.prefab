@@ -164,7 +164,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.99999994, y: 2, z: 0.99999994}
   m_Center: {x: 0, y: 0.49999997, z: 0}
---- !u!114 &2919164145292069874
+--- !u!114 &269202513887480627
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,9 +173,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4992471732020390356}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4be3e53206e54ca489f23ed407142d50, type: 3}
+  m_Script: {fileID: 11500000, guid: af1295ee0b0145f4abf03cf68fdfa0d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 8880700520545538158, guid: bd3a33f81dc36b841b6b92a379ebd2e9, type: 3}
+  enemies: []
+  toAttack: {fileID: 0}
+  waitTime: 100
+  DamageValue: 100
+  isAttacking: 0
 --- !u!114 &7770876656898930455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +195,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerType: 2
-  isSpawned: 0
 --- !u!4 &5621339209377870702 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f40e352ed4d3c1c4786a0c9bd4dc1157, type: 3}

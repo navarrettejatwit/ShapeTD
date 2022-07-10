@@ -53,7 +53,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d887ac38eb423cc41847acfebbcbe2a4, type: 3}
       propertyPath: m_Name
-      value: towerRound_crystals
+      value: towerRound_crystals Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d887ac38eb423cc41847acfebbcbe2a4, type: 3}
+--- !u!1 &1760277902654247755 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d887ac38eb423cc41847acfebbcbe2a4, type: 3}
+  m_PrefabInstance: {fileID: 1489753305237171738}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-8506574286000402255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760277902654247755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af1295ee0b0145f4abf03cf68fdfa0d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 8880700520545538158, guid: bd3a33f81dc36b841b6b92a379ebd2e9, type: 3}
+  enemies: []
+  toAttack: {fileID: 0}
+  waitTime: 100
+  DamageValue: 100
+  isAttacking: 0

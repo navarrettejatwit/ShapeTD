@@ -173,8 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerType: 1
-  isSpawned: 0
---- !u!114 &6225051132011972346
+--- !u!114 &4126942762523614406
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,9 +182,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7159207735758073182}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42eec7490e95eba4ab8f1edd1da7d7bd, type: 3}
+  m_Script: {fileID: 11500000, guid: af1295ee0b0145f4abf03cf68fdfa0d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 8880700520545538158, guid: bd3a33f81dc36b841b6b92a379ebd2e9, type: 3}
+  enemies: []
+  toAttack: {fileID: 0}
+  waitTime: 100
+  DamageValue: 100
+  isAttacking: 0
 --- !u!4 &7498859713197963236 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 37daf7d1f984d624391254fd17af4910, type: 3}

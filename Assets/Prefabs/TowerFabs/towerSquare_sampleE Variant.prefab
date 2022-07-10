@@ -156,19 +156,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.99999994, y: 2, z: 0.99999994}
   m_Center: {x: 0, y: 0.49999997, z: 0}
---- !u!114 &1454157251380147597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6018721398499614740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 493f84b5ea895dd4ea35a874d5539ea6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8112543066675998589
+--- !u!114 &-2445773774051299255
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,7 +169,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerType: 3
-  isSpawned: 0
+--- !u!114 &-497580261536271390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6018721398499614740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af1295ee0b0145f4abf03cf68fdfa0d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 8880700520545538158, guid: bd3a33f81dc36b841b6b92a379ebd2e9, type: 3}
+  enemies: []
+  toAttack: {fileID: 0}
+  waitTime: 100
+  DamageValue: 100
+  isAttacking: 0
 --- !u!4 &6398800975367043758 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 48751321ddc60ef42b4c94ececfb1640, type: 3}
