@@ -3263,9 +3263,9 @@ MonoBehaviour:
   EnemyPrefab: {fileID: -4628301548730046433, guid: 1e4ef6c9c5638e644a80f5dfd4d7652c, type: 3}
   EnemyPrefab1: {fileID: -6902075080154479171, guid: ded0a287dd3461746b151e78254a01ab, type: 3}
   enemies: {fileID: 2062918689}
-  enemyPerWave: 0
-  timeBetween: 0
-  spawnTime: 0
+  enemyPerWave: 20
+  timeBetween: 10
+  spawnTime: 3
 --- !u!1 &1233928810
 GameObject:
   m_ObjectHideFlags: 0
@@ -4565,11 +4565,11 @@ MonoBehaviour:
   SlotGrid: {fileID: 1760650490}
   row: 10
   column: 10
-  StandardTowerPrefab: {fileID: 747555455008626126, guid: 23f2eff1722c1c54cb13253dc53aa431, type: 3}
+  StandardTowerPrefab: {fileID: -2445773774051299255, guid: 7e2e8958f34d27d4193fb6259f42f2b0, type: 3}
   RapidFireTowerPrefab: {fileID: 2321416465711676624, guid: d1f8242048746ad4cb9c21bebb054666, type: 3}
   SplashTowerPrefab: {fileID: 7770876656898930455, guid: d106884334c12f04a8fbe6b2a23bcd87, type: 3}
-  HeavyTowerPrefab: {fileID: 8112543066675998589, guid: 7e2e8958f34d27d4193fb6259f42f2b0, type: 3}
-  RayTowerPrefab: {fileID: 2005042252333560373, guid: 6d650516b23e50640ac289af00a0609c, type: 3}
+  HeavyTowerPrefab: {fileID: 4563150834179221197, guid: 23f2eff1722c1c54cb13253dc53aa431, type: 3}
+  RayTowerPrefab: {fileID: -4797678881587076345, guid: 6d650516b23e50640ac289af00a0609c, type: 3}
   towers: {fileID: 2068128630}
 --- !u!1 &1754476999
 GameObject:
@@ -5754,3 +5754,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4551310914427507985
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6255713074573825927}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 96.54246, y: 12.792226, z: -0.003951283}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6255713074573825927
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4551310914427507985}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1

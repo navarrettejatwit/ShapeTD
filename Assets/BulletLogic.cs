@@ -6,16 +6,18 @@ public class BulletLogic : MonoBehaviour
 {
     public float travelSpeed;
     public int Damage;
+    public Rigidbody2D rigidBody;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rigidBody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(new Vector3(travelSpeed, 0, 0));
+       this.transform.Translate(.05f, 0, Time.deltaTime);
+       rigidBody.transform.Translate(.05f, 0, Time.deltaTime);
     }
     public void onTriggerEnter(Collider collision)
     {

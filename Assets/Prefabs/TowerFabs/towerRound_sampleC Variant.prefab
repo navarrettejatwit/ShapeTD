@@ -177,11 +177,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 8880700520545538158, guid: bd3a33f81dc36b841b6b92a379ebd2e9, type: 3}
-  enemies: []
+  enemies:
+  - {fileID: 919132149155446097, guid: c492480f64ac6cf4db52d5b06cad0853, type: 3}
   toAttack: {fileID: 0}
-  waitTime: 100
+  waitTime: 5
   DamageValue: 100
   isAttacking: 0
+  isHitscan: 0
+  isSplash: 0
 --- !u!114 &7770876656898930455
 MonoBehaviour:
   m_ObjectHideFlags: 0

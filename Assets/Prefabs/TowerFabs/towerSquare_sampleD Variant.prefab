@@ -122,11 +122,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 8880700520545538158, guid: bd3a33f81dc36b841b6b92a379ebd2e9, type: 3}
-  enemies: []
-  toAttack: {fileID: 0}
-  waitTime: 100
+  enemies:
+  - {fileID: 7159207735758073182, guid: d1f8242048746ad4cb9c21bebb054666, type: 3}
+  toAttack: {fileID: 5667477613800113651, guid: 1458f746d1a8028428a8cfcc6f514de0, type: 3}
+  waitTime: 5
   DamageValue: 10
-  isAttacking: 0
+  isAttacking: 1
+  isHitscan: 0
+  isSplash: 0
 --- !u!1001 &7443629173580423626
 PrefabInstance:
   m_ObjectHideFlags: 0

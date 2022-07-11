@@ -36,7 +36,7 @@ public class TowerRay : MonoBehaviour
             if(attackTime <= Time.time)
             {
                GameObject bulletInstance = Instantiate(bullet, transform);
-                bulletInstance.GetComponent<Bullet>().Damage = DamageValue;
+                bulletInstance.GetComponent<BulletLogic>().Damage = DamageValue;
                 attackTime = Time.time + waitTime;
             }
         }

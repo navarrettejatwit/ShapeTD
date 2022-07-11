@@ -184,9 +184,11 @@ MonoBehaviour:
   bullet: {fileID: 8880700520545538158, guid: bd3a33f81dc36b841b6b92a379ebd2e9, type: 3}
   enemies: []
   toAttack: {fileID: 0}
-  waitTime: 100
+  waitTime: 5
   DamageValue: 100
   isAttacking: 0
+  isHitscan: 0
+  isSplash: 0
 --- !u!4 &6398800975367043758 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 48751321ddc60ef42b4c94ececfb1640, type: 3}
