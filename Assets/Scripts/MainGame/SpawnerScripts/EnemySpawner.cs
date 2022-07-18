@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -27,8 +29,10 @@ public class EnemySpawner : MonoBehaviour
     private Transform SpawnPoint;
 
     private bool needSpawnPoint = false;
-
+    public TextMeshProUGUI enemyCount;
+    public TextMeshProUGUI waveCountUI;
     private int i = 0;
+    private int waveNumber =0;
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +55,7 @@ public class EnemySpawner : MonoBehaviour
     {
         spawnTime -= Time.deltaTime;
         spawnWave();
-
+        enemyCount.text = "Enemies: "+enemies.transform.childCount;
 
     }
 
@@ -67,6 +71,8 @@ public class EnemySpawner : MonoBehaviour
         if (spawnTime <= 0f)
         {
             Enemy e;
+            waveNumber++;
+            waveCountUI.text = "Wave: " + waveNumber;
             for (int i = 0; i < enemyPerWave; i++)
             {
                 getSpawnPoint();

@@ -6,7 +6,7 @@ using UnityEngine;
 public class TowerRay : MonoBehaviour
 {
     public GameObject bullet;
-    public List<GameObject> enemies;
+    public GameObject enemyContainer;
     public GameObject toAttack;
     public float waitTime;
     private float attackTime;
@@ -23,15 +23,16 @@ public class TowerRay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemies.Count > 0 && isAttacking == false)
+        
+        if (enemyContainer.transform.childCount > 0 && isAttacking == false)
         {
             isAttacking = true;
         }
-        else if(enemies.Count == 0 && isAttacking == true)
+        else if(enemyContainer.transform.childCount ==0 && isAttacking == true)
         {
             isAttacking = false;
         }
-        if (toAttack != null)
+        if (isAttacking)
         {
             if(attackTime <= Time.time)
             {
@@ -40,5 +41,9 @@ public class TowerRay : MonoBehaviour
                 attackTime = Time.time + waitTime;
             }
         }
+    }
+    void Awake()
+    {
+        enemyContainer = GameObject.Find("Enemies");
     }
 }
